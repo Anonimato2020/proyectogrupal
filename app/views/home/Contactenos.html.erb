@@ -1,0 +1,54 @@
+<h1>CONTÁCTENOS</h1>
+<%= form_for :login, :html => {:method => :post, :class => "form-horizontal"}, :url => { :action => :EnvioContactenos} do |a| %>
+				
+	<div class="form-group">
+	
+		<br>
+		<div class="col-sm-3">
+			<%= a.label :nombre, "Nombre" %>
+		</div>
+		<div class="col-sm-9">
+			<%= a.text_field :nombre, {:class => "form-control", :placeholder => "Introduzca su nombre"} %>
+		</div>
+		</br>
+
+		<br>
+
+
+		<div class="col-sm-3">
+			<%= a.label :motivo, "Motivo de Contacto" %>
+		</div>
+		<div class="col-sm-9">
+			<%= a.text_field :motivo, {:class => "form-control", :placeholder => "Consulta general"} %>
+		</div>
+		</br>
+
+		<br>
+
+		<div class="col-sm-3">
+			<%= a.label :cuenta, "Dirección de su Cuenta de Correo " %>
+		</div>
+		<div class="col-sm-9">
+			<%= a.text_field :cuenta, {:class => "form-control", :placeholder => "Introduzca su cuenta de correo"} %>
+		</div>
+
+		</br>
+
+		<div class="col-sm-3">
+			<%= a.label :mensaje, "Mensaje " %>
+		</div>
+		<div class="col-sm-9">
+			<%= a.text_field :mensaje, {:class => "form-control", :placeholder => "Introduzca su mensaje"} %>
+		</div>
+
+
+	</div>
+	<div class="col-sm-offset-8 col-sm-2">
+		<br>
+		<%= a.submit "Enviar", :class => "btn btn-info", :onclick => "return _onclick();" %>
+	</div>
+	<div class="col-sm-2">
+		<br>
+		<%= a.submit "Cancelar", :class => "btn btn-info", :onclick => "return _onclick();" %>
+	</div>
+<% end %>

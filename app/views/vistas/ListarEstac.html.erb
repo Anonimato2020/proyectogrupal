@@ -1,0 +1,54 @@
+<h2 class="text-center">Lista de estacionamientos por fecha</h2>
+<br>
+<%= form_for :lista, :html => { :method => :get, :class => "form-horizontal"}, :url => { :action => "ListarEstac"} do |l| %>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-2">
+			<%= l.label :fechaini, "Fecha inicial" %>
+		</div>
+		<div class="col-sm-3">
+			<%= l.date_field :fechaini, {:class => "form-control" }  %>
+		</div>
+		<div class="col-sm-1">
+			<span class="glyphicon glyphicon-calendar"></span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-2">
+			<%= l.label :fechafin, "Fecha final" %>
+		</div>
+		<div class="col-sm-3">
+			<%= l.date_field :fechafin, {:class => "form-control"}  %>
+		</div>
+		<div class="col-sm-1">
+			<span class="glyphicon glyphicon-calendar"></span>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-5">
+			<button onclick="filtrarAlquileres()" class = "btn btn-info btn-md"> Aceptar</button>
+			<%= l.submit "Cancelar", :class => "btn btn-info btn-md" %>
+		</div>
+	</div>
+<% end %>
+
+<script >
+	
+
+function filtrarAlquileres(){
+
+var fechaIni = $('#lista_fechaini').val()
+var fechaFin = $('#lista_fechafin').val()
+
+var newLink=fechaIni+'&fechaFin='+fechaFin
+
+let link = document.createElement('a');
+    link.style.display = "none"; // because Firefox sux
+    document.body.appendChild(link); // because Firefox sux
+    link.href = '/alquilers?fechaIni='+encodeURIComponent(newLink);
+   //link.download = filename;
+    link.click();
+
+}
+</script>

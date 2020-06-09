@@ -1,0 +1,64 @@
+<%= form_with(model: publicidad, local: true, :html => {:class => "form-horizontal"}) do |form| %>
+  <% if publicidad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(publicidad.errors.count, "error") %> prohibited this publicidad from being saved:</h2>
+
+      <ul>
+      <% publicidad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+      <%= form.label :titulo %>  
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :titulo %>  
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+       <%= form.label :contenido %> 
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :contenido %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+       <%= form.label :fechaini %> 
+    </div>
+    <div class="col-sm-3">
+      <%= form.date_field :fechaini %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+       <%= form.label :fechafin %> 
+    </div>
+    <div class="col-sm-3">
+      <%= form.date_field :fechafin %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+       <%= form.label :tarifa %> 
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :tarifa %>
+    </div>
+  </div>
+
+  <div class="form-group">
+  <div class="actions col-sm-offset-6">
+    <%= form.submit "Crear publicidad" %>
+  </div>
+  </div>
+<% end %>

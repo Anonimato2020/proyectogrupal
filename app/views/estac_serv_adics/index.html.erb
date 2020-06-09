@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estac Serv Adics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tarifa</th>
+      <th>Estacionamiento</th>
+      <th>Serv adicionale</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estac_serv_adics.each do |estac_serv_adic| %>
+      <tr>
+        <td><%= estac_serv_adic.tarifa %></td>
+        <td><%= estac_serv_adic.estacionamiento %></td>
+        <td><%= estac_serv_adic.serv_adicionale %></td>
+        <td><%= link_to 'Show', estac_serv_adic %></td>
+        <td><%= link_to 'Edit', edit_estac_serv_adic_path(estac_serv_adic) %></td>
+        <td><%= link_to 'Destroy', estac_serv_adic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estac Serv Adic', new_estac_serv_adic_path %>

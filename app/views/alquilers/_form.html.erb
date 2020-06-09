@@ -1,0 +1,62 @@
+<%= form_with(model: alquiler, local: true, :html => { :class => "form-horizontal"}) do |form| %>
+  <% if alquiler.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(alquiler.errors.count, "error") %> prohibited this alquiler from being saved:</h2>
+
+      <ul>
+      <% alquiler.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :estacionamiento_id %>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+      <%= form.label :fecha, "Fecha" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.date_field :fecha, {:class => "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+      <%= form.label :hora, "Hora" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.time_select :hora %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+      <%= form.label :nhora, "Número de horas" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.number_field :nhora, {:class => "form-control", :min => 1, :max => 24 } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+      <%= form.label :tpago, "Tipo de pago" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.select :tpago, [["Efectivo",1], ["Tarjeta",2]], {:include_blank => "Seleccionar"}, {:class => "form-control", :placeholder => "Seleccione un tipo de pago"} %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-3">
+      <%= form.label :sadicionales, "Servicios Adicionales" %>
+    </div>
+    <br>
+    <br>
+
+  </div>
+
+  <div class="actions col-sm-offset-6">
+    <%= form.submit "Alquilar", {:class => "btn btn-info"} %>
+  </div>
+<% end %>

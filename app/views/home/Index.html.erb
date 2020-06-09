@@ -1,0 +1,89 @@
+<style>
+
+  body {
+    background-image: url(/assets/INDEX.jpeg);
+  }
+
+  html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vertical-center {
+    min-height: 1%;
+    min-height: 1vh; /*1vh = 1% */
+    display: flex;
+    align-items: center;
+  }
+
+  .modal-header, h4, .close {
+    background-color: #5cb85c;
+    color: white !important;
+    text-align: center;
+    font-size: 20px;
+  }
+</style>
+
+<%= form_for :upc, :html => { :method => :get, :class => "form-horizontal" } do |f| %>
+
+<div class="container">
+ <center><h1><p class="bg-info">BUSCA TU ESTACIONAMIENTO</p></h1></center>
+</div>
+<br>
+</br>
+
+
+<div class="vertical-center">
+  <div class="container">
+      <div class="row">
+        <div class="input-group col-sm-offset-2 col-sm-8 col-sm-offset-2">
+          <%= f.select :selecciontipo, [["Distrito",1],["Tipo",2], ["Ubicación",3],["Precio por Hora",5],["Puntuación",4]], {:include_blank => "Buscar por"},{:class=>"form-control input-lg"} %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="vertical-center">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="input-group col-sm-offset-2 col-sm-8 col-sm-offset-2">
+        <%= f.text_field :direccion, { :class => "form-control input-lg", :placeholder => "Ingrese una palabra clave" } %>
+        <span class="input-group-btn">
+          <%= f.submit "Buscar", {:class => "btn btn-primary input-lg"} %>
+          </form>"
+        </span>
+      </div>
+    </div>
+  </div>
+  </br>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Titulo de Validacion</h4>
+      </div>
+      <div class="modal-body">
+        <p id="txtMensaje">Ingrese su busqueda</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    if (menu != null) {
+      $("#" + menu).addClass('active');
+    }
+  });
+</script>
+

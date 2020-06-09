@@ -1,0 +1,61 @@
+<%= form_with(model: autenticacion, local: true, :html => { :class => "form-horizontal"}) do |form| %>
+  <% if autenticacion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(autenticacion.errors.count, "error") %> prohibited this autenticacion from being saved:</h2>
+
+      <ul>
+      <% autenticacion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-2">
+      <%= form.label :usuario %>
+    </div>
+    <div class="col-sm-4">
+      <%= form.text_field :usuario, { :class => "form-control", :placeholder => "Email o nombre de usuario" } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-2">
+      <%= form.label :tipoUsuario, "Tipo Usuario" %>
+    </div>
+    <div class="col-sm-4">
+      <%= form.select :tipoUsuario, [["Cliente","CLIENTE"],["Dueño","DUENO"]], {:include_blank => "Seleccione"},{:class=>"form-control"} %>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-2">
+      <%= form.label :password, "Password" %>
+    </div>
+    <div class="col-sm-4">
+      <%= form.text_field :password, { :type => "password", :class => "form-control", :placeholder => "Tu contrasena" } %>
+    </div>    
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-2">
+      <%= form.label :confpassword, "Confirmar password" %>
+    </div>
+    <div class="col-sm-4">
+      <%= form.text_field :confpassword, { :type => "password", :class => "form-control", :placeholder => "Verifica tu contrasena" } %>
+    </div>    
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-2">
+      <%= form.submit "Crear", :class => "btn btn-primary" %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.submit "Salir", :class => "btn btn-primary", :controller => "home", :action => "Index" %>
+    </div>
+    <div class="col-sm-2">
+    </div>    
+  </div>
+
+<% end %>

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estacionamientos</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Servicio Adicional</th>
+      <th>Direccion</th>
+      <th>Monto</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estacionamientos.each do |estacionamiento| %>
+    <% @alquiler.each do |alquiler| %>
+    <% @ser_adicinales.each do |adicionales| %>
+      <tr>
+        <td><%= estacionamiento.nombre %></td>
+        <td><%= alquiler.fecha %></td>
+        <td><%= alquiler.hora %></td>
+        <td><%= adicinales.nombre %></td>
+        <td><%= estacionamiento.direccion %></td>
+        <td>Monto</td>
+      </tr>
+    <% end %>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+<%= link_to 'New Estacionamiento', new_estacionamiento_path %>

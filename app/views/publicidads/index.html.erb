@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Publicidads</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Contenido</th>
+      <th>Fechaini</th>
+      <th>Fechafin</th>
+      <th>Tarifa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publicidads.each do |publicidad| %>
+      <tr>
+        <td><%= publicidad.titulo %></td>
+        <td><%= publicidad.contenido %></td>
+        <td><%= publicidad.fechaini %></td>
+        <td><%= publicidad.fechafin %></td>
+        <td><%= publicidad.tarifa %></td>
+        <td><%= link_to 'Show', publicidad %></td>
+        <td><%= link_to 'Edit', edit_publicidad_path(publicidad) %></td>
+        <td><%= link_to 'Destroy', publicidad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Publicidad', new_publicidad_path %>

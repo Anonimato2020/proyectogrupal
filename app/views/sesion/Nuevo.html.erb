@@ -1,0 +1,37 @@
+<% provide(:title, "Log in") %>
+<h3 class="text-center">Iniciar sesión</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: sesion_create_path, :html => {:method => :post, :class => "form-horizontal"} ) do |f| %>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-2">
+          <%= f.label :email, "Correo" %>    
+        </div>
+        <div class="col-sm-7">
+          <%= f.email_field :email, {:class => "form-control", :placeholder => "Ingrese su cuenta de correo"} %>    
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-3">
+          <%= f.label :password %>    
+        </div>
+        <div class="col-sm-6">
+          <%= f.password_field :password, class: 'form-control', placeholder: 'Ingrese su contraseña' %>    
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-6">
+          <%= f.submit "Log in", class: "btn btn-primary" %>    
+        </div>
+      </div>
+    <% end %>
+
+    <div class="col-sm-offset-3">
+      <%= link_to "Click aquí si es nuevo usuario", new_autenticacion_path %>
+    </div>
+  </div>
+</div>

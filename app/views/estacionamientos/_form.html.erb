@@ -1,0 +1,284 @@
+<%= form_with(model: estacionamiento, local: true, :html => { :class => "form-horizontal"}) do |form| %>
+  <% if estacionamiento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estacionamiento.errors.count, "error") %>. No se pueden guardar los datos del estacionamiento:</h2>
+
+      <ul>
+      <% estacionamiento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :nombre, "Nombre" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :nombre, {:class => "form-control", :placeholder => "Nombre del estacionamiento"} %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :departamento, "Departamento" %>
+    </div>
+    <div class="col-sm-3">
+      <select id = "estacionamiento_departamento" name="estacionamiento[departamento]" class="form-control">
+      <option value="">
+        Seleccionar 
+      </option>
+      <% @lista_departamentos.each do |departamento| %>
+      <option value="<%= departamento.idDepartamento %>">
+        <%= departamento.Departamento %>
+      </option>
+      <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :provincia, "Provincia" %>
+    </div>
+    <div class="col-sm-3">
+      <select id = "estacionamiento_provincia" name="estacionamiento[provincia]" class="form-control">
+      <option value="">
+        Seleccionar 
+      </option>
+      <% @lista_provincias.each do |provincia| %>
+      <option value="<%= provincia.idProvincia %>">
+        <%= provincia.Provincia %>
+      </option>
+      <% end %>
+      </select>
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :distrito, "Distrito" %>
+    </div>
+    <div class="col-sm-3">
+      <select id = "estacionamiento_distrito" name="estacionamiento[distrito]" class="form-control">
+      <option value="">
+        Seleccionar 
+      </option>
+      <% @lista_distritos.each do |distrito| %>
+      <option value="<%= distrito.idDistrito %>">
+        <%= distrito.Distrito %>
+      </option>
+      <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :direccion, "Dirección" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :direccion, { :class => "form-control", :placeholder => "Ingrese su dirección"} %>
+    </div>
+    
+    <div class="col-sm-2">
+      <%= form.label :mapa, "Seleccionar ubicación" %>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1">
+      <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Buscar mapa</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :latitud, "Latitud" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :latitud, { :class => "form-control"} %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.label :longitud, "Longitud" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :longitud, { :class => "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :dias, "Horario de atención" %>
+    </div>
+    <div class="col-sm-8 col-sm-offset-1">
+      <%= form.label :lunes, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :lunes, {}, "Lunes", nil %>
+      Lunes
+      <% end %>
+
+      <%= form.label :martes, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :martes, {}, "Martes", nil %>
+      Martes
+      <% end %>
+
+      <%= form.label :miercoles, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :miercoles, {}, "Miércoles", nil %>
+      Miércoles
+      <% end %>
+
+      <%= form.label :jueves, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :jueves, {}, "Jueves", nil %>
+      Jueves
+      <% end %>
+
+      <%= form.label :viernes, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :viernes, {}, "Viernes", nil %>
+      Viernes
+      <% end %>
+
+      <%= form.label :sabado, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :sabado, {}, "Sábado", nil %>
+      Sábado
+      <% end %>
+
+      <%= form.label :domingo, { :class => "checkbox-inline" } do %>
+      <%= form.check_box :domingo, {}, "Domingo", nil %>
+      Domingo
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :hinicio, "Hora de inicio" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.time_select :hinicio, {:class => "form-control"} %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.label :hcierre, "Hora de cierre" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.time_select :hcierre, {:class => "form-control"} %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :telf, "Teléfono" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.phone_field :telf, { :class => "text_field", :placeholder => "Ingrese número telefónico"} %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.label :nespac, "Número de espacios" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.number_field :nespac, { :class => "text_field", :placeholder => "Ingrese el número de espacios"} %>
+    </div>
+  </div>
+
+  <p class="col-sm-offset-1"><b>Medidas del estacionamiento en metros:</b></p>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-1">
+      <%= form.label :largo, "Largo" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.number_field :largo, { :class => "text_field", :step => 0.01, :placeholder => "En metros"} %>
+    </div>
+    <div class="col-sm-1">
+      <%= form.label :ancho, "Ancho" %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.number_field :ancho, { :class => "text_field", :step => 0.01, :placeholder => "En metros"} %>
+    </div>
+    <div class="col-sm-1">
+      <%= form.label :alto, "Altura" %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.number_field :alto, { :class => "text_field", :step => 0.01, :placeholder => "En metros"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :precio, "Precio en soles (S/.)" %>
+    </div>
+    <div class="col-sm-9">
+      <%= form.number_field :precio, { :class => "text_field", :step => 0.01, :placeholder => "Ingrese el monto"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-2">
+      <%= form.label :img, "Agregar foto" %>
+    </div>
+    <div class="col-sm-9">
+      <%= form.file_field :img %>
+    </div>
+  </div>
+
+
+  <div class="col-sm-offset-1 col-sm-11">
+
+    <%= link_to "Agregar servicio adicional", {:controller => "serv_adicionales", :action => "index"}, {:class => "btn btn-info"} %>
+    <br>
+    <br>
+  </div>
+  
+
+  <div class="actions col-sm-offset-9 col-sm-1">
+    <br>
+    <%= form.submit "Guardar", {:class => "btn btn-info input-md"} %>
+  </div>
+
+<% end %>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Seleccionar ubicación</h4>
+      </div>
+      <div class="modal-body">
+        <div id="map" style="width:100%;height: 400px">       
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+    var map;
+    var marker;
+    var myLatLng = {lat: -12.041876, lng: -77.043035};
+
+  function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: myLatLng
+      });
+      google.maps.event.addListener(map, 'click', function (event) {
+        $("#estacionamiento_latitud").val(event.latLng.lat)
+        $("#estacionamiento_longitud").val(event.latLng.lng)
+         _onclick(event.latLng);});
+    }
+
+  function _onclick(myLatLng) {
+    if (marker != undefined ) {
+      marker.setMap(null)
+    }
+    marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+  }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW_fSpTSF90-1M5zQzlS5KZJ9hqiilGHk&callback=initMap"
+    async defer></script>

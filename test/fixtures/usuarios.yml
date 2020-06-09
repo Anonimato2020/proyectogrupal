@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nroDocumento: MyString
+  nombres: MyString
+  apellidoPaterno: MyString
+  apellidoMaterno: MyString
+  fechaNacimiento: 2019-02-13
+  celular: MyString
+  sexo: MyString
+  direccion: MyString
+  autenticacion: one
+
+two:
+  nroDocumento: MyString
+  nombres: MyString
+  apellidoPaterno: MyString
+  apellidoMaterno: MyString
+  fechaNacimiento: 2019-02-13
+  celular: MyString
+  sexo: MyString
+  direccion: MyString
+  autenticacion: two

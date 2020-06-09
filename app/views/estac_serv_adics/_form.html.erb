@@ -1,0 +1,32 @@
+<%= form_with(model: estac_serv_adic, local: true) do |form| %>
+  <% if estac_serv_adic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estac_serv_adic.errors.count, "error") %> prohibited this estac_serv_adic from being saved:</h2>
+
+      <ul>
+      <% estac_serv_adic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tarifa %>
+    <%= form.text_field :tarifa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estacionamiento_id %>
+    <%= form.text_field :estacionamiento_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :serv_adicionale_id %>
+    <%= form.text_field :serv_adicionale_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
